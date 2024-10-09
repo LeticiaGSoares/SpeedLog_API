@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { Sequelize } from "sequelize";
-import db from "./databases.js";
+import db from "./dbs.js";
 
 const conn = new Sequelize(
     db.bd, 

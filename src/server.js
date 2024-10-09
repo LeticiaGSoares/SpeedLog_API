@@ -1,4 +1,6 @@
 import express from "express"
+import conn from "./config/conn.js"
+import routers from "./routes/routers.js"
 import cors from "cors"
 import "dotenv/config"
 
@@ -10,12 +12,19 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
-import routers from "./routers.js"
+conn
+  .sync()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log("[APP] Servidor rodando na porta " + PORT);
+    });
+  })
+  .catch((error) => {
+    console.error("[APP] Error: " + error);
+  });
 
 app.use("/", routers)
 
 app.use("*", (req, res)=> {
     res.status(404).json({message: "Rota não encontrada"})
 })
-
-app.listen(PORT)
