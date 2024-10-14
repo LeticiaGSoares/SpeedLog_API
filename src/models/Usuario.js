@@ -28,11 +28,6 @@ const Usuario = conn.define(
       allowNull: true,
       defaultValue: null
     },
-    data_nascimento: {
-      type: DataTypes.DATEONLY,
-      required: true,
-      allowNull: false
-    },
     foto: {
       type: DataTypes.STRING,
       required: false,
@@ -43,7 +38,61 @@ const Usuario = conn.define(
       values: ["administrador", "motoboy", "usuario"],
       required: true,
       allowNull: false
-    }
+    },
+    data_nascimento: {
+      type: DataTypes.DATEONLY,
+      required: false,
+      allowNull: true,
+      defaultValue: null
+    },
+    telefone: {
+      type: DataTypes.STRING,
+      required: false,
+      allowNull: true,
+      defaultValue: null      
+    },
+    cidade: {
+      type: DataTypes.STRING,
+      required: false,
+      allowNull: true,
+      defaultValue: null
+    },
+    avaliacao: {
+      type: DataTypes.INTEGER,
+      required: false,
+      allowNull: true,
+      defaultValue: null
+    },
+    disponivel: {
+      type: DataTypes.BOOLEAN,
+      required: true,
+      allowNull: false,
+      defaultValue: true
+    },
+    cpf: {
+      type: DataTypes.STRING,
+      required: false,
+      allowNull: true,
+      defaultValue: null
+    },
+    cnh: {
+      type: DataTypes.STRING,
+      required: false,
+      allowNull: true,
+      defaultValue: null
+    },
+    moto_placa: {
+      type: DataTypes.STRING,
+      required: false,
+      allowNull: true,
+      defaultValue: null
+    },
+    moto_modelo: {
+      type: DataTypes.STRING,
+      required: false,
+      allowNull: true,
+      defaultValue: null
+    },
   },
   {
     tableName: mysqlTable,

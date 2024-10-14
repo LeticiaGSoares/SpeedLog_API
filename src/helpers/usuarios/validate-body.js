@@ -27,7 +27,20 @@ const validateBody = (req, res, next) => {
                 required_error: "O papel é obrigatório"
             }).refine((data) => data === "usuario", {
                 message: "Papel inválido"
-            })
+            }),
+            senha: z.string({
+                required_error: "O senha é obrigatória",
+                invalid_type_error: "Senha inválida"
+            }).min(6, "O senha é muito pequena"),
+            telefone: z.string({
+                required_error: "O telefone é obrigatório",
+                invalid_type_error: "Telefone inválido"
+            }).min(14, "O telefone é muito pequeno")
+                .max(15, "O telefone é muito grande"),
+            cidade: z.string({
+                required_error: "O cidade é obrigatória",
+                invalid_type_error: "Cidade inválida"
+            }).min(3, "O cidade é muito pequeno").optional(),
         })
 
         usuarioSchema.parse(req.body);

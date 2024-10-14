@@ -2,8 +2,10 @@ import returnRes from "../../helpers/returnRes.js";
 import createUsuarioModule from "./modules/create.js";
 
 const createUsuario = async (req, res) => {
-    const { nome, email, senha, data_nascimento, papel } = req.body;
+    const { nome, email, senha, data_nascimento, papel, telefone, cidade } = req.body;
     const foto = req.files?.foto ? req.files.foto[0].path : null;
+
+    const avaliacao = 4
 
     const usuario = {
         nome,
@@ -11,7 +13,10 @@ const createUsuario = async (req, res) => {
         senha,
         foto,
         data_nascimento,
-        papel
+        papel,
+        telefone,
+        cidade,
+        avaliacao
     };
 
     try {

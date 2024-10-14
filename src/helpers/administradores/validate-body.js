@@ -15,11 +15,6 @@ const validateBody = (req, res, next) => {
             }).email(
                 "Email inválido"
             ),
-            data_nascimento: z.string({
-                required_error: "A data de nascimento é obrigatória"
-            }).date(
-                "Data de nascimento inválida"
-            ),
             foto: z.string({
                 invalid_type_error: "Foto inválida"
             }).optional(),
@@ -27,7 +22,11 @@ const validateBody = (req, res, next) => {
                 required_error: "O papel é obrigatório"
             }).refine((data) => data === "administrador", {
                 message: "Papel inválido"
-            })
+            }),
+            senha: z.string({
+                required_error: "O senha é obrigatória",
+                invalid_type_error: "Senha inválida"
+            }).min(6, "O senha é muito pequena")
         })
 
         administradorSchema.parse(req.body);

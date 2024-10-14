@@ -2,7 +2,7 @@ import returnRes from "../../helpers/returnRes.js";
 import createMotoboyModule from "./modules/create.js";
 
 const createMotoboy = async (req, res) => {
-    const { nome, email, senha, data_nascimento, papel } = req.body;
+    const { nome, email, senha, data_nascimento, papel, cnh, cpf, moto_placa, moto_modelo, disponivel } = req.body;
     const foto = req.files?.foto ? req.files.foto[0].path : null;
 
     const motoboy = {
@@ -11,7 +11,12 @@ const createMotoboy = async (req, res) => {
         senha,
         foto,
         data_nascimento,
-        papel
+        papel, 
+        cnh, 
+        cpf, 
+        moto_placa, 
+        moto_modelo, 
+        disponivel
     };
 
     try {
