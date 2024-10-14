@@ -67,7 +67,7 @@ const Usuario = conn.define(
       type: DataTypes.BOOLEAN,
       required: true,
       allowNull: false,
-      defaultValue: true
+      defaultValue: null
     },
     cpf: {
       type: DataTypes.STRING,

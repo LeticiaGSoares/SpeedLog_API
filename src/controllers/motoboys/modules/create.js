@@ -9,6 +9,12 @@ const createMotoboyModule = async (motoboy, res) => {
             return returnRes("Este email já está sendo utilizado", 500, res)
         }
 
+        const verifyIfExistCPF = await Usuario.findOne( { where: { cpf: motoboy.email, papel: motoboy.papel }})
+
+        if (verifyIfExistCPF) {
+            return returnRes("Este CPF já está sendo utilizado", 500, res)
+        }
+
         const motoboyCreate = await Usuario.create(motoboy);
         
         if (!motoboyCreate) {
