@@ -28,13 +28,22 @@ const Usuario = conn.define(
       allowNull: true,
       defaultValue: null
     },
+    data_nascimento: {
+      type: DataTypes.DATEONLY,
+      required: true,
+      allowNull: false
+    },
+    foto: {
+      type: DataTypes.STRING,
+      required: false,
+      allowNull: true
+    },
     papel: {
       type: DataTypes.ENUM,
-      values: ["administrador", "autor", "leitor"],
-      defaultValue: "leitor",
+      values: ["administrador", "motoboy", "usuario"],
       required: true,
-      allowNull: false,
-    },
+      allowNull: false
+    }
   },
   {
     tableName: mysqlTable,
