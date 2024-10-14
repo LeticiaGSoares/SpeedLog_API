@@ -5,7 +5,7 @@ import returnRes from "../returnRes.js"
 
 const validateBody = (req, res, next) => {
     try {
-        const usuarioSchema = z.object({
+        const motoboySchema = z.object({
             nome: z.string({
                 required_error: "O nome é obrigatório",
                 invalid_type_error: "Nome inválido"
@@ -25,16 +25,16 @@ const validateBody = (req, res, next) => {
             }).optional(),
             papel: z.string({
                 required_error: "O papel é obrigatório"
-            }).refine((data) => data === "usuario", {
+            }).refine((data) => data === "motoboy", {
                 message: "Papel inválido"
             })
         })
 
-        usuarioSchema.parse(req.body);
+        motoboySchema.parse(req.body);
 
         next()
     } catch (error) {
-        console.error("[HELPER] [USUARIOS] [VALIDATE BODY] Error: " + error);
+        console.error("[HELPER] [MOTOBOYS] [VALIDATE BODY] Error: " + error);
         return returnRes(formatZodError(error), 500, res);
     }
 }

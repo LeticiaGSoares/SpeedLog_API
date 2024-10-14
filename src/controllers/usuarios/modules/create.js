@@ -3,6 +3,12 @@ import Usuario from "../../../models/Usuario.js";
 
 const createUsuarioModule = async (usuario, res) => {
     try {
+        const verifyIfExist = await Usuario.findOne( { where: { email: usuario.email, papel: usuario.papel }})
+
+        if (verifyIfExist) {
+            return returnRes("Este email já está sendo utilizado", 500, res)
+        }
+
         const usuarioCreate = await Usuario.create(usuario);
         
         if (!usuarioCreate) {
