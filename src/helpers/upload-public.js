@@ -1,21 +1,53 @@
-import multer from "multer"
-import path from "node:path"
-import { fileURLToPath } from "node:url"
+import multer from "multer";
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const publicFolder = path.resolve( __dirname, "../public")
+const __fileName = fileURLToPath(import.meta.url);
+const __dirName = path.dirname(__fileName);
 
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, publicFolder)
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname)); 
+const imageStore = multer.diskStorage({
+  destination: (req, file, cb) => {
+    let folder = "";
+
+    if (req.baseUrl.includes("administradores")) {
+      folder = "administradores";
+    } else if (req.baseUrl.includes("usuarios")) {
+      folder = "usuarios";
+    } else if (req.baseUrl.includes("motoboys")) {
+      folder = "motoboys";
     }
-})
 
-const upload = multer({ storage: storage });
+    cb(null, path.join(__dirName, `../../public/${folder}`));
+  },
+  filename: (req, file, cb) => {
+    cb(
+      null,
+      file.fieldname + "-" + Date.now() + path.extname(file.originalname)
+    );
+  },
+});
+
+const imageUpload = multer({
+  storage: imageStore,
+  limits: { fileSize: "500000" },
+  fileFilter(req, file, cb) {
+    if (!file.originalname.match(/\.(png||jpg||webp)$/)) {
+      return cb(
+        new Error("Por favor, envie apenas arquivos: JPG, PNG ou WEBP")
+      );
+    }
+    cb(null, true);
+  },
+});
+
+const upload = (req, res, next) => {
+  const uploadMiddleware = imageUpload.fields([
+    { name: "foto", maxCount: 1 },
+  ]);
+  uploadMiddleware(req, res, (err) => {
+    next();
+  });
+};
 
 export default upload;

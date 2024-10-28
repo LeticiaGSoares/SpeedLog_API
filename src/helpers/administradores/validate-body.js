@@ -18,11 +18,6 @@ const validateBody = (req, res, next) => {
             foto: z.string({
                 invalid_type_error: "Foto inválida"
             }).optional(),
-            papel: z.string({
-                required_error: "O papel é obrigatório"
-            }).refine((data) => data === "administrador", {
-                message: "Papel inválido"
-            }),
             senha: z.string({
                 required_error: "O senha é obrigatória",
                 invalid_type_error: "Senha inválida"

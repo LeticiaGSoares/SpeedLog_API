@@ -2,8 +2,10 @@ import returnRes from "../../helpers/returnRes.js";
 import createAdministradorModule from "./modules/create.js";
 
 const createAdministrador = async (req, res) => {
-    const { nome, email, senha, papel } = req.body;
+    const { nome, email, senha } = req.body;
     const foto = req.files?.foto ? req.files.foto[0].path : null;
+
+    papel = "administrador"
 
     const administrador = {
         nome,
