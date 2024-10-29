@@ -2,6 +2,7 @@ import returnRes from "../../../helpers/returnRes.js";
 import Usuario from "../../../models/Usuario.js";
 import { typeOfUsers } from "../../../models/Usuario.js";
 import deleteArchive from "../../../helpers/deleteArchive.js";
+import createToken from "../../../helpers/create-token.js"
 
 const createUsuarioModule = async (type, usuario, res) => {
     try {
@@ -20,6 +21,13 @@ const createUsuarioModule = async (type, usuario, res) => {
                 await deleteArchive(usuario.foto)
                 return returnRes("Este CPF já está sendo utilizado", 500, res)
             }
+        }
+
+        const createUserToken = await createToken(usuario, res)
+
+        if (!createUserToken) {
+            await deleteArchive(usuario.foto)
+            return returnRes("Não foi possível criar o token do usuário", 500, res);
         }
 
         const usuarioCreate = await Usuario.create(usuario);
