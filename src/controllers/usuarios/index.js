@@ -1,5 +1,5 @@
 import createUsuario from "./createUsuario.js"
 
-export const index = {
+export const indexControllersUsuarios = {
     create: createUsuario
 }

@@ -47,7 +47,8 @@ const validateBody = (req, res, next) => {
 
         next()
     } catch (error) {
-        console.error("[HELPER] [USUARIOS] [VALIDATE BODY] Error: " + error);
+        deleteArchive(req.files.foto[0].path)
+        console.error("[HELPER] [CLIENTES] [VALIDATE BODY] Error: " + error);
         return returnRes(formatZodError(error), 500, res);
     }
 }

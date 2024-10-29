@@ -7,7 +7,11 @@ const SECRET_KEY = process.env.JWT_PASS
 const createToken = async (user, res)=>{
 
     try{
-        const accessToken = jwt.sign({user}, SECRET_KEY, {expiresIn: '15m' } )
+        const accessToken = jwt.sign({
+            nome: user.nome,
+            papel: user.papel,
+            senha: user.senha
+        }, SECRET_KEY, {expiresIn: '15m' } )
         const refreshToken = jwt.sign({user}, SECRET_KEY, {expiresIn: '30d' } )
         
         res.cookie('refreshToken', refreshToken, {

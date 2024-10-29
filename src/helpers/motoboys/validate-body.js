@@ -50,6 +50,7 @@ const validateBody = (req, res, next) => {
 
         next()
     } catch (error) {
+        deleteArchive(req.files.foto[0].path)
         console.error("[HELPER] [MOTOBOYS] [VALIDATE BODY] Error: " + error);
         return returnRes(formatZodError(error), 500, res);
     }

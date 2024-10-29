@@ -2,6 +2,7 @@ import { z } from "zod"
 
 import formatZodError from "../formatZodError.js";
 import returnRes from "../returnRes.js"
+import deleteArchive from "../deleteArchive.js";
 
 const validateBody = (req, res, next) => {
     try {
@@ -15,6 +16,11 @@ const validateBody = (req, res, next) => {
             }).email(
                 "Email inválido"
             ),
+            papel: z.string({
+                required_error: "O papel é obrigatório"
+            }).refine((data) => data === "administrador", {
+                message: "Papel inválido"
+            }),
             foto: z.string({
                 invalid_type_error: "Foto inválida"
             }).optional(),
@@ -28,6 +34,7 @@ const validateBody = (req, res, next) => {
 
         next()
     } catch (error) {
+        deleteArchive(req.files.foto[0].path)
         console.error("[HELPER] [ADMINSTRADORES] [VALIDATE BODY] Error: " + error);
         return returnRes(formatZodError(error), 500, res);
     }

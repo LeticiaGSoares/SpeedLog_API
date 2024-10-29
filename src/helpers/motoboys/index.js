@@ -1,5 +1,5 @@
 import validateBody from "./validate-body.js"
 
-export const index = {
+export const indexHelpersMotoboys = {
     validate: validateBody
 }
