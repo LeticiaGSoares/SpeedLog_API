@@ -3,6 +3,12 @@ import { DataTypes } from "sequelize";
 
 const mysqlTable = "usuarios";
 
+export const typeOfUsers = {
+  administrador: "administrador",
+  motoboy: "motoboy",
+  cliente: "cliente"
+}
+
 const Usuario = conn.define(
   mysqlTable,
   {
@@ -35,7 +41,7 @@ const Usuario = conn.define(
     },
     papel: {
       type: DataTypes.ENUM,
-      values: ["administrador", "motoboy", "usuario"],
+      values: [typeOfUsers.administrador, typeOfUsers.motoboy, typeOfUsers.cliente],
       required: true,
       allowNull: false
     },

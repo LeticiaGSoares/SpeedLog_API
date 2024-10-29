@@ -2,6 +2,7 @@ import multer from "multer";
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import returnRes from "./returnRes.js";
 
 const __fileName = fileURLToPath(import.meta.url);
 const __dirName = path.dirname(__fileName);
@@ -10,12 +11,14 @@ const imageStore = multer.diskStorage({
   destination: (req, file, cb) => {
     let folder = "";
 
-    if (req.baseUrl.includes("administradores")) {
+    if (req.url.includes("admin")) {
       folder = "administradores";
-    } else if (req.baseUrl.includes("usuarios")) {
-      folder = "usuarios";
-    } else if (req.baseUrl.includes("motoboys")) {
+    } else if (req.url.includes("cliente")) {
+      folder = "clientes";
+    } else if (req.url.includes("motoboys")) {
       folder = "motoboys";
+    } else {
+      returnRes("Rota não especificou o tipo de usuário", 500, res)
     }
 
     cb(null, path.join(__dirName, `../../public/${folder}`));

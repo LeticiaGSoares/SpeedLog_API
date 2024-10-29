@@ -7,7 +7,7 @@ import { index as usuariosHelpers } from "../helpers/usuarios/index.js"
 import upload from "../helpers/upload-public.js"
 
 router.post(
-    "/create",
+    "/registrar/cliente",
     upload,
     usuariosHelpers.validate,
     usuariosController.create

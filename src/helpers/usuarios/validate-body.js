@@ -25,7 +25,7 @@ const validateBody = (req, res, next) => {
             }).optional(),
             papel: z.string({
                 required_error: "O papel é obrigatório"
-            }).refine((data) => data === "usuario", {
+            }).refine((data) => data === "cliente", {
                 message: "Papel inválido"
             }),
             senha: z.string({
