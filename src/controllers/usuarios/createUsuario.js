@@ -17,7 +17,7 @@ const createUsuario = async (req, res) => {
     if (papel == typeOfUsers.cliente) {
       const { nome, email, senha, data_nascimento, telefone, cidade } =
         req.body;
-      const foto = req.files?.foto ? req.files.foto[0].path : null;f
+      const foto = req.files?.foto ? req.files.foto[0].path : null;
 
       const avaliacao = 4;
 

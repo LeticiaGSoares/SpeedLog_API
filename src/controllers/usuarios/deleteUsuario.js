@@ -4,7 +4,6 @@ import deleteUsuarioModule from "./modules/delete.js";
 
 const deleteUsuario = async (req, res) => {
     const { id } = req.params
-    console.log(id)
     try {
         deleteUsuarioModule(id)    
     } catch (error) {
