@@ -15,12 +15,10 @@ const imageStore = multer.diskStorage({
       folder = "administradores";
     } else if (req.url.includes("cliente")) {
       folder = "clientes";
-    } else if (req.url.includes("motoboys")) {
+    } else if (req.url.includes("motoboy")) {
       folder = "motoboys";
-    } else {
-      returnRes("Rota não especificou o tipo de usuário", 500, res)
     }
-
+    
     cb(null, path.join(__dirName, `../../public/${folder}`));
   },
   filename: (req, file, cb) => {

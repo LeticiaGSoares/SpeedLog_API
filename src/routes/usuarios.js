@@ -11,7 +11,6 @@ import upload from "../helpers/upload-public.js"
 router.post(
     "/registrar/cliente",
     upload,
-    indexHelpersClientes.auth,
     indexHelpersClientes.validate,
     indexControllersUsuarios.create
 )
@@ -26,6 +25,13 @@ router.post(
 router.post(
     "/registrar/admin",
     upload,
+    indexHelpersAdministradores.auth,
     indexHelpersAdministradores.validate,
     indexControllersUsuarios.create
+)
+
+router.delete(
+    "/deletar/:id",
+    indexHelpersAdministradores.authWithoutBody,
+    indexControllersUsuarios.delete
 )

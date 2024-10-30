@@ -6,7 +6,7 @@ import returnRes from '../returnRes.js'
 
 const SECRET_KEY = process.env.JWT_PASS
 
-const authToken = async (req, res, next) => {
+const authTokenBody = async (req, res, next) => {
     const authHeader = req.headers.authorization;
     const token = authHeader && authHeader.split(' ')[1];
 
@@ -18,20 +18,22 @@ const authToken = async (req, res, next) => {
         }
 
         if (!token && verifyLengthAdmins.length > 0) {
+            await deleteArchive(req.files.foto[0].path)
             return returnRes("Você não está autorizado e não aplicou um token válido", 401, res)
         }
 
         jwt.verify(token, SECRET_KEY, async (err, user) => {
 
             if (user.papel != typeOfUsers.administrador) {
+                await deleteArchive(req.files.foto[0].path)
                 return returnRes("Você não está autorizado", 403, res)
             }
 
             next()
         });
     } catch (error) {
-        console.error("[HELPERS] [ADMINISTRADORES] [TOKEN] Error: " + error);
+        console.error("[HELPERS] [ADMINISTRADORES] [TOKEN BODY] Error: " + error);
         return returnRes("Erro ao autenticar token", 500, res);
     }
 }
-export default authToken;
+export default authTokenBody;

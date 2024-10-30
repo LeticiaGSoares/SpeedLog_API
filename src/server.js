@@ -23,7 +23,7 @@ conn
     console.error("[APP] Error: " + error);
   });
 
-app.use("/api", routers)
+app.use("/", routers)
 
 app.use("*", (req, res)=> {
     res.status(404).json({message: "Rota não encontrada"})

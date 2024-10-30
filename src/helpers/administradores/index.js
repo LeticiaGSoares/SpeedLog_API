@@ -1,7 +1,9 @@
+import authTokenBody from "./auth-token-body.js"
+import validateBody from "./auth-token-body.js"
 import authToken from "./auth-token.js"
-import validateBody from "./validate-body.js"
 
 export const indexHelpersAdministradores = {
     validate: validateBody,
-    auth: authToken
+    authWithoutBody: authToken,
+    auth: authTokenBody
 }
