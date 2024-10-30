@@ -3,7 +3,7 @@ const returnRes = (msg, status, res) => {
         return msg
     }
 
-    return res.status(201).send({ message: msg })
+    return res.status(status).send({ message: msg })
 }
 
 export default returnRes
