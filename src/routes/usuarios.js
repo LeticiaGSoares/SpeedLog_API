@@ -35,3 +35,10 @@ router.delete(
     indexHelpersAdministradores.authWithoutBody,
     indexControllersUsuarios.delete
 )
+
+router.put(
+    "/atualizar/:id",
+    upload,
+    indexHelpersClientes.auth,
+    indexControllersUsuarios.update
+)

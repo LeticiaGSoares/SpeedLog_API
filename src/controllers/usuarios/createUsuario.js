@@ -42,7 +42,6 @@ const createUsuario = async (req, res) => {
         email,
         senha,
         data_nascimento,
-        papel,
         cnh,
         cpf,
         moto_placa,
@@ -51,6 +50,7 @@ const createUsuario = async (req, res) => {
       const foto = req.files?.foto ? req.files.foto[0].path : null;
 
       const disponivel = true;
+      const avaliacao = 4;
 
       const motoboy = {
         nome,
@@ -59,6 +59,7 @@ const createUsuario = async (req, res) => {
         foto,
         data_nascimento,
         cnh,
+        avaliacao,
         cpf,
         moto_placa,
         moto_modelo,

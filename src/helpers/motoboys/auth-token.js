@@ -26,7 +26,6 @@ const authToken = async (req, res, next) => {
         jwt.verify(token, SECRET_KEY, async (err, user) => {
 
             if (user.papel != typeOfUsers.administrador || user.papel != typeOfUsers.motoboy) {
-                await deleteArchive(req.files.foto[0].path)
                 return returnRes("Você não está autorizado", 403, res)
             }
 
@@ -34,7 +33,7 @@ const authToken = async (req, res, next) => {
         });
     } catch (error) {
         console.error("[HELPERS] [MOTOBOYS] [TOKEN] Error: " + error);
-        return returnRes("Erro ao criar token", 500, res);
+        return returnRes("Erro ao autenticar token", 500, res);
     }
 }
 export default authToken;
