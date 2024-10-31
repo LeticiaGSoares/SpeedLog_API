@@ -42,3 +42,9 @@ router.put(
     indexHelpersClientes.auth,
     indexControllersUsuarios.update
 )
+
+router.get(
+    "/",
+    indexHelpersAdministradores.authWithoutBody,
+    indexControllersUsuarios.search
+)
