@@ -7,6 +7,7 @@ const createToken = async (user, res) => {
 
     try {
         const accessToken = jwt.sign({
+            id: user.usuario_id,
             nome: user.nome,
             papel: user.papel,
             senha: user.senha
