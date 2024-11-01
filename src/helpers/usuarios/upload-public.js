@@ -46,8 +46,7 @@ const upload = (req, res, next) => {
   const uploadMiddleware = imageUpload.fields([
     { name: "foto", maxCount: 1 },
  ]);
-
- console.log(req.file)
+ 
   uploadMiddleware(req, res, (err) => {
     next();
   });

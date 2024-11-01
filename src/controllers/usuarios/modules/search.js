@@ -12,7 +12,7 @@ const searchUsuarioModule = async (id, res) => {
 
         return returnRes(usuarioInfo, 200, res);
     } catch (error) {
-        console.error("[MODULE] [USUARIOS] [UPDATE] Error: " + error);
+        console.error("[MODULE] [USUARIOS] [SEARCH] Error: " + error);
         return returnRes("Erro ao atualizar usuário", 500, res);
     }
 };

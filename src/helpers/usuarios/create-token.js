@@ -7,13 +7,13 @@ const createToken = async (user, res) => {
 
     try {
         const accessToken = jwt.sign({
-            id: user.usuario_id,
-            nome: user.nome,
+            id: user.usuario_id || null,
+            email: user.email,
             papel: user.papel,
             senha: user.senha
         }, SECRET_KEY, { expiresIn: '30d' })
 
-        console.log(`Token do tipo ${user.papel} do usuário ${user.nome} criado: \n ${accessToken}`)
+        console.log(`Token do tipo ${user.papel} criado: \n ${accessToken}`)
         return accessToken
     } catch (error) {
         return res.status(500).json({ message: "Erro interno do servidor" + error })

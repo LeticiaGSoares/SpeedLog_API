@@ -39,15 +39,15 @@ router.delete(
 router.put(
     "/atualizar/:id",
     indexGeneralHelpers.upload,
-    indexHelpersClientes.auth,
+    indexGeneralHelpers.auth,
     indexGeneralHelpers.validateBodyUpdate,
     indexControllersUsuarios.update
 )
 
 router.get(
-    "/",
-    indexHelpersAdministradores.authWithoutBody,
-    indexControllersUsuarios.search
+    "/logout",
+    indexGeneralHelpers.auth,
+    indexControllersUsuarios.logout
 )
 
 router.post(

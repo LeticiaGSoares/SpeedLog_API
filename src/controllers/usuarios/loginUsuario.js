@@ -1,20 +1,19 @@
 import returnRes from "../../helpers/usuarios/returnRes.js";
-import loginUsuarioModule from "./modules/search.js";
+import loginUsuarioModule from "./modules/login.js";
 
 const loginUsuario = async (req, res) => {
-    const { nome, email, papel, senha } = req.body
+    const { email, papel, senha } = req.body
 
     try {
         const usuario = {
-            nome: nome,
             email: email,
             senha: senha,
             papel: papel,
         }
 
-        loginUsuarioModule()
+        loginUsuarioModule(usuario, res)
     } catch (error) {
-        console.error("[CONTROLLER] [USUARIOS] [SEARCH] Error: " + error);
+        console.error("[CONTROLLER] [USUARIOS] [LOGIN] Error: " + error);
         return returnRes("Erro ao realizar o login do usuário", 500, res);
     }
 };

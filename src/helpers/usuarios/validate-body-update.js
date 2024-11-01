@@ -17,11 +17,6 @@ const validateBodyUpdate = (req, res, next) => {
             }).email(
                 "Email inválido"
             ).optional(),
-            papel: z.string({
-                required_error: "O papel é obrigatório"
-            }).refine((data) => data === typeOfUsers.administrador || data === typeOfUsers.motoboy || data === typeOfUsers.cliente, {
-                message: "Papel inválido"
-            }).optional(),
             foto: z.string({
                 invalid_type_error: "Foto inválida"
             }).optional(),

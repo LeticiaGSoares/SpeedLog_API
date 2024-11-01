@@ -1,16 +1,12 @@
 import { z } from "zod"
 
 import returnRes from "./returnRes.js"
-import deleteArchive from "./deleteArchive.js";
 import formatZodError from "./formatZodError.js";
+import { typeOfUsers } from "../../models/Usuario.js";
 
 const validateBodyLogin = (req, res, next) => {
     try {
         const loginSchema = z.object({
-            nome: z.string({
-                required_error: "O nome é obrigatório",
-                invalid_type_error: "Nome inválido"
-            }).min(3, "O nome é muito pequeno"),
             email: z.string({
                 required_error: "O email é obrigatório"
             }).email(
@@ -18,7 +14,7 @@ const validateBodyLogin = (req, res, next) => {
             ),
             papel: z.string({
                 required_error: "O papel é obrigatório"
-            }).refine((data) => data === "administrador", {
+            }).refine((data) => data === typeOfUsers.administrador || data === typeOfUsers.motoboy || data === typeOfUsers.cliente, {
                 message: "Papel inválido"
             }),
             senha: z.string({

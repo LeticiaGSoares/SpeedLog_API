@@ -3,7 +3,6 @@ import searchUsuarioModule from "./modules/search.js";
 
 const searchUsuario = async (req, res) => {
     const { id } = req.query  
-    console.log(id)
     try {
         return await searchUsuarioModule(id, res)
     } catch (error) {
