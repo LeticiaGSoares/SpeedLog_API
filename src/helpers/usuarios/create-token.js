@@ -14,7 +14,7 @@ const createToken = async (user, res) => {
         }, SECRET_KEY, { expiresIn: '30d' })
 
         console.log(`Token do tipo ${user.papel} do usuário ${user.nome} criado: \n ${accessToken}`)
-        return true
+        return accessToken
     } catch (error) {
         return res.status(500).json({ message: "Erro interno do servidor" + error })
     }

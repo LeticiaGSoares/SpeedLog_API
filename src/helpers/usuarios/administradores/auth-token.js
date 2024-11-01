@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken'
 import "dotenv/config"
-import Usuario, { typeOfUsers } from "../../models/Usuario.js"
-import deleteArchive from '../deleteArchive.js'
+import Usuario, { typeOfUsers } from "../../../models/Usuario.js"
 import returnRes from '../returnRes.js'
 
 const SECRET_KEY = process.env.JWT_PASS

@@ -1,4 +1,4 @@
-import returnRes from "../../helpers/returnRes.js";
+import returnRes from "../../helpers/usuarios/returnRes.js";
 import deleteUsuarioModule from "./modules/delete.js";
 
 const deleteUsuario = async (req, res) => {

@@ -3,6 +3,7 @@ import { z } from "zod"
 import formatZodError from "../formatZodError.js";
 import returnRes from "../returnRes.js"
 import deleteArchive from "../deleteArchive.js";
+import { typeOfUsers } from "../../../models/Usuario.js";
 
 const validateBody = (req, res, next) => {
     try {
@@ -18,7 +19,7 @@ const validateBody = (req, res, next) => {
             ),
             papel: z.string({
                 required_error: "O papel é obrigatório"
-            }).refine((data) => data === "administrador", {
+            }).refine((data) => data === typeOfUsers.administrador, {
                 message: "Papel inválido"
             }),
             foto: z.string({

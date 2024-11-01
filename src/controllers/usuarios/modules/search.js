@@ -1,4 +1,4 @@
-import returnRes from "../../../helpers/returnRes.js";
+import returnRes from "../../../helpers/usuarios/returnRes.js";
 import Usuario from "../../../models/Usuario.js";
 
 const searchUsuarioModule = async (id, res) => {

@@ -6,7 +6,7 @@ import returnRes from "../returnRes.js"
 
 const validateBody = (req, res, next) => {
     try {
-        const usuarioSchema = z.object({
+        const clienteSchema = z.object({
             nome: z.string({
                 required_error: "O nome é obrigatório",
                 invalid_type_error: "Nome inválido"
@@ -44,7 +44,7 @@ const validateBody = (req, res, next) => {
             }).min(3, "O cidade é muito pequeno").optional(),
         })
 
-        usuarioSchema.parse(req.body);
+        clienteSchema.parse(req.body);
 
         next()
     } catch (error) {

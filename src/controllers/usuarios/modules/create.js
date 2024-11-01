@@ -1,8 +1,8 @@
-import returnRes from "../../../helpers/returnRes.js";
+import returnRes from "../../../helpers/usuarios/returnRes.js";
 import Usuario from "../../../models/Usuario.js";
 import { typeOfUsers } from "../../../models/Usuario.js";
-import deleteArchive from "../../../helpers/deleteArchive.js";
-import createToken from "../../../helpers/create-token.js"
+import deleteArchive from "../../../helpers/usuarios/deleteArchive.js";
+import createToken from "../../../helpers/usuarios/create-token.js"
 
 const createUsuarioModule = async (type, usuario, res) => {
     try {

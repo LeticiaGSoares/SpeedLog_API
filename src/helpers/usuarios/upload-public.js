@@ -19,7 +19,7 @@ const imageStore = multer.diskStorage({
       folder = "motoboys";
     }
     
-    cb(null, path.join(__dirName, `../../public/${folder}`));
+    cb(null, path.join(__dirName, `../../../public/${folder}`));
   },
   filename: (req, file, cb) => {
     cb(
@@ -45,7 +45,9 @@ const imageUpload = multer({
 const upload = (req, res, next) => {
   const uploadMiddleware = imageUpload.fields([
     { name: "foto", maxCount: 1 },
-  ]);
+ ]);
+
+ console.log(req.file)
   uploadMiddleware(req, res, (err) => {
     next();
   });

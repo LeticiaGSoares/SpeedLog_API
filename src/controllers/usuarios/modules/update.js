@@ -1,5 +1,5 @@
-import deleteArchive from "../../../helpers/deleteArchive.js";
-import returnRes from "../../../helpers/returnRes.js";
+import deleteArchive from "../../../helpers/usuarios/deleteArchive.js";
+import returnRes from "../../../helpers/usuarios/returnRes.js";
 import Usuario from "../../../models/Usuario.js";
 
 const updateUsuarioModule = async (id, usuarioInfo, res) => {
