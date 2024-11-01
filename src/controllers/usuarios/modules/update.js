@@ -1,9 +1,18 @@
+import deleteArchive from "../../../helpers/deleteArchive.js";
 import returnRes from "../../../helpers/returnRes.js";
 import Usuario from "../../../models/Usuario.js";
 
 const updateUsuarioModule = async (id, usuarioInfo, res) => {
     try {
-        
+
+        const oldUsuario = await Usuario.findOne({ where: { usuario_id: id } })
+
+        if (!oldUsuario) {
+            return returnRes("Usuario não encontrada", 404, res);
+        }
+
+        await deleteArchive(oldUsuario.foto)
+
         const [linhasUsuarios] = await Usuario.update(usuarioInfo, {
             where: { usuario_id: id },
         });
