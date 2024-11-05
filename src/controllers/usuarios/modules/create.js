@@ -7,7 +7,7 @@ import createToken from "../../../helpers/usuarios/create-token.js"
 const createUsuarioModule = async (type, usuario, res) => {
     try {
 
-        const verifyIfExist = await Usuario.findOne({ where: { email: usuario.email, papel: usuario.papel } })
+        const verifyIfExist = await Usuario.findOne({ where: { email: usuario.email} })
 
         if (verifyIfExist) {
             await deleteArchive(usuario.foto)

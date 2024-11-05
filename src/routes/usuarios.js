@@ -49,6 +49,12 @@ router.get(
     indexGeneralHelpers.auth,
     indexControllersUsuarios.logout
 )
+   
+router.get(
+    "/",
+    indexHelpersAdministradores.authWithoutBody,
+    indexControllersUsuarios.search
+)   
 
 router.post(
     "/login",

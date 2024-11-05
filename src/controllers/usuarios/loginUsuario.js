@@ -2,11 +2,12 @@ import returnRes from "../../helpers/usuarios/returnRes.js";
 import loginUsuarioModule from "./modules/login.js";
 
 const loginUsuario = async (req, res) => {
-    const { email, papel, senha } = req.body
+    const { email, cpf, papel, senha } = req.body
 
     try {
         const usuario = {
             email: email,
+            cpf: cpf,
             senha: senha,
             papel: papel,
         }

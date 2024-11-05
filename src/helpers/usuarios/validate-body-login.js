@@ -11,28 +11,21 @@ const validateBodyLogin = (req, res, next) => {
                 required_error: "O email é obrigatório"
             }).email(
                 "Email inválido"
-            ),
+            ).optional(),
+            cpf: z.string().regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, "CPF inválido").optional(),
             papel: z.string({
                 required_error: "O papel é obrigatório"
-            }).refine((data) => data === typeOfUsers.administrador || data === typeOfUsers.motoboy || data === typeOfUsers.cliente, {
+            }).refine((data) => data === typeOfUsers.administrador || data === typeOfUsers.cliente, {
                 message: "Papel inválido"
             }),
             senha: z.string({
                 required_error: "O senha é obrigatória",
                 invalid_type_error: "Senha inválida"
-            }).min(6, "O senha é muito pequena"),
-            confirmarSenha: z.string({
-                required_error: "O senha é obrigatória",
-                invalid_type_error: "Senha inválida"
-            }).min(6, "O senha é muito pequena").superRefine((data, ctx) => {
-                if (data.senha !== data.confirmarSenha) {
-                    ctx.addIssue({
-                        path: ["confirmarSenha"],
-                        message: "As senhas não coincidem",
-                    });
-                }
-            }), 
-        })
+            }).min(6, "O senha é muito pequena")
+        }).refine(data => data.email || data.cpf, {
+            message: "É necessário informar pelo menos o email ou o CPF",
+            path: ["email", "cpf"]
+        });
 
         loginSchema.parse(req.body);
         next()

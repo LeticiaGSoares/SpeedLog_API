@@ -33,6 +33,17 @@ const validateBody = (req, res, next) => {
                 required_error: "O senha é obrigatória",
                 invalid_type_error: "Senha inválida"
             }).min(6, "O senha é muito pequena"),
+            confirmarSenha: z.string({
+                required_error: "O senha é obrigatória",
+                invalid_type_error: "Senha inválida"
+            }).min(6, "O senha é muito pequena").superRefine((data, ctx) => {
+                if (data.senha !== data.confirmarSenha) {
+                    ctx.addIssue({
+                        path: ["confirmarSenha"],
+                        message: "As senhas não coincidem",
+                    });
+                }
+            }), 
             telefone: z.string({
                 required_error: "O telefone é obrigatório",
                 invalid_type_error: "Telefone inválido"
