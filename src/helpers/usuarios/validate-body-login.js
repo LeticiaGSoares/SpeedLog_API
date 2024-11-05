@@ -12,7 +12,7 @@ const validateBodyLogin = (req, res, next) => {
             }).email(
                 "Email inválido"
             ).optional(),
-            cpf: z.string().regex(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, "CPF inválido").optional(),
+            cpf: z.string().regex(/^\d{11}/, "CPF inválido").optional(),
             papel: z.string({
                 required_error: "O papel é obrigatório"
             }).refine((data) => data === typeOfUsers.administrador || data === typeOfUsers.cliente, {
