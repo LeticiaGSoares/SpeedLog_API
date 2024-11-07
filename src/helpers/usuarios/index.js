@@ -5,7 +5,7 @@ import validateBodyUpdate from "./validate-body-update.js"
 import validateBodyLogin from "./validate-body-login.js"
 import formDataMiddleware from "./multer-form-body.js"
 
-const indexGeneralHelpers = {
+const indexUsuariosGlobalHelpers = {
     upload: upload,
     createToken: createToken,
     auth: authToken,
@@ -14,4 +14,4 @@ const indexGeneralHelpers = {
     multerFormBody: formDataMiddleware
 }
 
-export default indexGeneralHelpers
+export default indexUsuariosGlobalHelpers

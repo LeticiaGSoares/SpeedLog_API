@@ -1,5 +1,5 @@
 import createToken from "../../../helpers/usuarios/create-token.js";
-import returnRes from "../../../helpers/usuarios/returnRes.js";
+import returnRes from "../../../helpers/returnRes.js";
 import Usuario, { typeOfUsers } from "../../../models/Usuario.js";
 
 const loginUsuarioModule = async (usuario, res) => {

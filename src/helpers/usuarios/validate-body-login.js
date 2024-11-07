@@ -1,7 +1,7 @@
 import { z } from "zod"
 
-import returnRes from "./returnRes.js"
-import formatZodError from "./formatZodError.js";
+import returnRes from "../returnRes.js"
+import formatZodError from "../formatZodError.js";
 import { typeOfUsers } from "../../models/Usuario.js";
 
 const validateBodyLogin = (req, res, next) => {

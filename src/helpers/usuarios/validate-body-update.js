@@ -1,7 +1,7 @@
 import { z } from "zod"
 
-import formatZodError from "./formatZodError.js";
-import returnRes from "./returnRes.js"
+import formatZodError from "../formatZodError.js";
+import returnRes from "../returnRes.js"
 import deleteArchive from "./deleteArchive.js";
 import { typeOfUsers } from "../../models/Usuario.js";
 

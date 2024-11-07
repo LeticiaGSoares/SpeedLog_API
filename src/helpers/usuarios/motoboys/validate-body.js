@@ -1,7 +1,8 @@
 import { z } from "zod"
 
-import formatZodError from "../formatZodError.js";
-import returnRes from "../returnRes.js"
+import returnRes from "../../returnRes.js"
+import deleteArchive from "../deleteArchive.js";
+import formatZodError from "../../formatZodError.js";
 
 const validateBody = (req, res, next) => {
     try {

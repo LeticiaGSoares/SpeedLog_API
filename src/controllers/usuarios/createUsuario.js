@@ -1,4 +1,4 @@
-import returnRes from "../../helpers/usuarios/returnRes.js";
+import returnRes from "../../helpers/returnRes.js";
 import createUsuarioModule from "./modules/create.js";
 import { typeOfUsers } from "../../models/Usuario.js";
 
@@ -18,9 +18,7 @@ const createUsuario = async (req, res) => {
       const { nome, email, senha, data_nascimento, telefone, cidade } =
         req.body;
       const foto = req.files?.foto ? req.files.foto[0].path : null;
-
-      console.log(req.files)
-
+      
       const avaliacao = 4;
 
       const cliente = {

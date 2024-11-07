@@ -1,4 +1,4 @@
-import returnRes from "../../../helpers/usuarios/returnRes.js";
+import returnRes from "../../../helpers/returnRes.js";
 import Usuario from "../../../models/Usuario.js";
 import deleteArchive from "../../../helpers/usuarios/deleteArchive.js";
 

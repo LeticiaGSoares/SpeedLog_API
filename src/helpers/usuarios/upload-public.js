@@ -2,7 +2,7 @@ import multer from "multer";
 
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import returnRes from "./returnRes.js";
+import returnRes from "../returnRes.js";
 
 const __fileName = fileURLToPath(import.meta.url);
 const __dirName = path.dirname(__fileName);

@@ -1,4 +1,4 @@
-import returnRes from "../../helpers/usuarios/returnRes.js";
+import returnRes from "../../helpers/returnRes.js";
 import loginUsuarioModule from "./modules/login.js";
 
 const loginUsuario = async (req, res) => {
