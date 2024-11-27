@@ -1,21 +1,21 @@
 import "dotenv/config";
 import { Sequelize } from "sequelize";
-import db from "./databases.js";
+import db from "./dbs.js";
 
 const conn = new Sequelize(
-    db.bd, 
-    db.user, 
-    db.password, 
+    db.bd,
+    db.user,
+    db.password,
     {
-    host: db.host,
-    dialect: "mysql"
+        host: db.host,
+        dialect: "mysql"
     }
 )
 
-try{
-    await conn.authenticate();
+try {
+    conn.authenticate();
     console.log("Connection MYSQL")
-}catch(error){
+} catch (error) {
     console.error("Error: ", error)
 }
 

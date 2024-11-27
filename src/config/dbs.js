@@ -1,20 +1,20 @@
 import "dotenv/config";
 
 let db = {
-    bd: process.env.MYSQL_DATABASE,
-    user: process.env.MYSQL_USER,
-    password: process.env.MYSQL_PASSWORD,
-    host:process.env.MYSQL_HOST,
-    port: process.env.MYSQL_PORT
+    bd: process.env.DB_NAME,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    host:process.env.DB_HOST,
+    port: process.env.DB_PORT
 }
 
-if(process.env.NODE_ENV === 'test') {
+if(process.env.NODE_ENV === 'true') {
     db = {
-        bd: process.env.BD_TEST_DB,
-        user: process.env.BD_TEST_USER,
-        password: process.env.BD_TEST_PASSWORD,
-        host:process.env.BD_TEST_HOST,
-        port: process.env.BD_TEST_PORT
+        bd: process.env.TEST_DB_NAME,
+        user: process.env.TEST_DB_USER,
+        password: process.env.TEST_DB_PASS,
+        host:process.env.TEST_DB_HOST,
+        port: process.env.TEST_DB_PORT
     }
 } 
 
